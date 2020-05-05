@@ -18,7 +18,7 @@ class AuthController extends BaseController
 
         if (Auth::attempt($credentials)) {
             $user = Auth::user();
-            $token = $user->createToken('RestApi')->accessToken;
+           $token = $user->createToken('RestApi')->accessToken;
             return $this->sendResponse($token);
         } else {
             return $this->sendError('Unauthorized.', [], 400);
@@ -32,7 +32,7 @@ class AuthController extends BaseController
         $validator = Validator::make($input, [
             'name' => 'required',
             'email' => 'required|email|unique:users',
-            'password' => 'required',
+            'spassword' => 'required',
             'c_password' => 'required|same:password',
         ]);
         if ($validator->fails()) {
