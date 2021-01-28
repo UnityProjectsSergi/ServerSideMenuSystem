@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Validator;
 
-class ClientController extends BaseController
+class ClientController extends Controller
 {
     /**
      * Display a listing of the resource.

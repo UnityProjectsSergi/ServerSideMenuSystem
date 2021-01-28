@@ -22,7 +22,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password','username'
     ];
 
     /**
@@ -46,4 +46,7 @@ class User extends Authenticatable
     public function authAcessToken(){
         return $this->hasMany('\App\OauthAccessToken');
     }
+    public function findForPassport($identifier) {
+        return $this->orWhere('email', $identifier)->orWhere('username', $identifier)->first();
+}
 }

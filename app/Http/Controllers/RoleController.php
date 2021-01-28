@@ -8,7 +8,7 @@ use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Validator;
 use Spatie\Permission\Models\Role;
 
-class RoleController extends BaseController
+class RoleController extends Controller
 {
     /**
      * Display a listing of the resource.

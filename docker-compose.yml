@@ -10,7 +10,16 @@ services:
     redis:
       image: redis:alpine
       container_name: redis
-
+    pma:
+      image: phpmyadmin/phpmyadmin
+      environment:
+        PMA_HOST: ${DB_HOST}
+        PMA_PORT: ${DB_PORT}
+        MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+      ports:
+        - 8083:80
+      links:
+        - mysql:mysql
     mysql:
       image: mysql:5.7
       container_name: mysql

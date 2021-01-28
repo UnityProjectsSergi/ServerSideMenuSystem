@@ -1,5 +1,5 @@
 <?php
-
+/* 
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Response;
@@ -12,7 +12,7 @@ class BaseController extends Controller
      * @param $result
      * @param  null  $message
      * @return Response
-     */
+     
     public function sendResponse($result, $message = null)
     {
         $response = [
@@ -24,7 +24,7 @@ class BaseController extends Controller
             $response['message'] = $message;
         }
 
-        return response()->json($response, 200);
+        return response()->json($result, 200);
     }
 
 
@@ -35,7 +35,7 @@ class BaseController extends Controller
      * @param  array  $errorMessages
      * @param  int  $code
      * @return Response
-     */
+     
     public function sendError($error, $errorMessages = [], $code = 404)
     {
         $response = [
@@ -50,3 +50,4 @@ class BaseController extends Controller
         return response()->json($response, $code);
     }
 }
+ */

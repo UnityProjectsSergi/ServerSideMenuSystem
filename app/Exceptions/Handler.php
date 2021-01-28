@@ -44,6 +44,7 @@ class Handler extends ExceptionHandler
     }
 
     /**
+     * 
      * Render an exception into an Http response.
      * @param $request
      * @param  Exception  $exception
@@ -54,11 +55,15 @@ class Handler extends ExceptionHandler
         if ($exception instanceof UnauthorizedException) {
             return response()->json(['success' => false, 'message' => 'User does not have the right permissions.'], 403);
         }
-
-        if ($exception instanceof NotFoundHttpException || $exception instanceof ModelNotFoundException) {
-            return response()->json(['success' => false, 'message' => 'Not Found'], 404);
+        if ($exception instanceof NotFoundHttpException) {
+            return response()->json(['success' => false, 'message' => 'Not Found Http'], 404);
         }
-
+        if($exception instanceof ModelNotFoundException){
+            return response()->json(['success' => false, 'message' => 'Not Found  Model'], 406);
+        }
+        if($exception instanceof NoDataExistsException){
+            return response()->json(['success'=>false, 'message'=>'No Data Exists'],410);
+        }
         return parent::render($request, $exception);
     }
 }
